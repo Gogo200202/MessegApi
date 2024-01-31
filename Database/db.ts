@@ -12,7 +12,12 @@ async function main() {
 import { UserSchema } from "../Models/users";
 const User = mongoose.model("User", UserSchema);
 
-async function makeUser(userName: string, email: string, password: string) {
+async function makeUser(
+  userName: string,
+  email: string,
+  password: string
+): Promise<boolean> {
+  let response = true;
   let hashPassword: string = "";
   await bcrypt
     .hash(password, saltRounds)
@@ -29,8 +34,10 @@ async function makeUser(userName: string, email: string, password: string) {
   try {
     await user.save();
   } catch (e: any) {
+    response = false;
     console.log(e);
   }
+  return response;
 }
 
 export { main, makeUser, mongoose, User };
