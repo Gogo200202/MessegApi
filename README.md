@@ -1,6 +1,6 @@
 # MessegApi
 
-This is a backend api written in runtime nodejs, framework express js,database mongodb and
+This is a backend api written in runtime nodejs, framework express js,database mongodb, orm Mongoose and
 typescript
 
 ## Installation
