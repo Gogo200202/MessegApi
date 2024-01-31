@@ -7,6 +7,8 @@ async function main() {
 }
 
 import { UserSchema } from "../Models/users";
+import { chatSchema } from "../Models/chats";
 const User = mongoose.model("User", UserSchema);
+const Chat = mongoose.model("Chat", chatSchema);
 
-export { main, mongoose, User };
+export { main, mongoose, User, Chat };

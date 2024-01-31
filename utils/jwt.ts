@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-//
+// its really bad practice to store key in this way!!!
 let key: string = "x+KNSX#Usdk*J`f!(fxPe*GNYV!JO/:M";
 
 function generateJwt(userName: string) {

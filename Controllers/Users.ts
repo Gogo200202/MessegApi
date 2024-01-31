@@ -1,8 +1,9 @@
-var express = require("express");
-var router = express.Router();
+let express = require("express");
+let router = express.Router();
 let CreateUserService = require("../Services/CreateUser");
 let validateUserService = require("../Services/validateUser");
 let jwt = require("../utils/jwt");
+let makeUsersFriendService = require("../Services/MakeUsersFriend");
 const register = router.post(
   "/register",
   async function (req: any, res: any, next: any) {
@@ -35,4 +36,21 @@ const login = router.post(
   }
 );
 
-export { register, login };
+const makeUsersFriends = router.post(
+  "/makeUsersFriends",
+  async function (req: any, res: any, next: any) {
+    let users = req.body;
+
+    let response: boolean = await makeUsersFriendService.makeUsersFriend(
+      users.userOne,
+      users.userTow
+    );
+    if (response) {
+      res.status(200).json({ ok: 200 });
+    } else {
+      res.status(400).json({ BadRequest: 400 });
+    }
+  }
+);
+
+export { register, login, makeUsersFriends };

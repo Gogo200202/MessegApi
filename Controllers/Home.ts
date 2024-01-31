@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const jwt = require("../utils/jwt");
-/* GET home page. */
 
 router.get("/", jwt.verifyToken, function (req: any, res: any, next: any) {
   res.json({
