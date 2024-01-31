@@ -4,15 +4,16 @@ async function ValidateUserPassword(
   userName: string,
   password: string
 ): Promise<boolean> {
-  let oneUser = await User.findOne({ username: userName });
-
+  console.log(User);
+  let oneUser = await User.User.findOne({ username: userName });
+  let result: boolean;
   await bcrypt
     .compare(password, oneUser.hash)
-    .then((res: string) => {
-      console.log(res);
-      return res;
+    .then((res: boolean) => {
+      result = res;
     })
     .catch((err: any) => console.error(err.message));
-  return false;
+
+  return result;
 }
 export { ValidateUserPassword };

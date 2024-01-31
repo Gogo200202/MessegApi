@@ -17,7 +17,8 @@
     "./Models/*.ts",
     "*.ts",
     "Database/db.ts",
-    "src/index.js"
+    "src/index.js",
+    "./utils**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
