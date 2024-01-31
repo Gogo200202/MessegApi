@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "out",
+    "sourceMap": true
+    //"strict": true,
+    // "esModuleInterop": true,
+    //"skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true,
+    //"noEmit": true,
+    //"allowImportingTsExtensions": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "Controllers/*.ts",
+    "./Models/*.ts",
+    "*.ts",
+    "Database/db.ts",
+    "src/index.js"
+  ],
+  "exclude": ["node_modules"]
+}
