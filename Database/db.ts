@@ -26,7 +26,11 @@ async function makeUser(userName: string, email: string, password: string) {
     email: email,
     hash: hashPassword,
   });
-  await user.save();
+  try {
+    await user.save();
+  } catch (e: any) {
+    console.log(e);
+  }
 }
 
 export { main, makeUser, mongoose, User };
