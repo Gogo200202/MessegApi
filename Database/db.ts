@@ -18,7 +18,7 @@ async function makeUser(userName: string, email: string, password: string) {
     .hash(password, saltRounds)
     .then((hash: string) => {
       hashPassword = hash;
-      //console.log("Hash ", hash);
+      // console.log("Hash ", hash);
     })
     .catch((err: { message: string }) => console.error(err.message));
   let user = new User({
