@@ -1,28 +1,37 @@
 var express = require("express");
 var router = express.Router();
-
-const Db = require("../Database/db");
-/* GET home page. */
+let CreateUserService = require("../Services/CreateUser");
+let validateUserService = require("../Services/validateUser");
 
 const createUser = router.post(
   "/createUser",
-  function (req: any, res: any, next: any) {
+  async function (req: any, res: any, next: any) {
     let user = req.body;
 
-    async function createUser() {
-      let response = await Db.makeUser(
-        user.username,
-        user.email,
-        user.password
-      );
-      if (!response) {
-        res.json({ BadRequest: 400 });
-      } else {
-        res.json({ ok: 200 });
-      }
+    let response = await CreateUserService.createUser(user);
+    if (response) {
+      res.json({ ok: 200 });
+    } else {
+      res.json({ BadRequest: 400 });
     }
-    createUser();
   }
 );
 
-export { createUser };
+const validateUser = router.post(
+  "/validateUser",
+  async function (req: any, res: any, next: any) {
+    let user = req.body;
+
+    let response: boolean = await validateUserService.ValidateUser(
+      user.username,
+      user.password
+    );
+    if (response) {
+      res.json({ ok: 200 });
+    } else {
+      res.json({ BadRequest: 400 });
+    }
+  }
+);
+
+export { createUser, validateUser };

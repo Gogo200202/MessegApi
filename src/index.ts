@@ -7,7 +7,6 @@ app.use(express.json());
 const home = require("../Controllers/Home");
 const Users = require("../Controllers/Users");
 const Db = require("../Database/db");
-const validation = require("../utils/validator");
 Db.main();
 app.use(home.router);
 app.use(Users.createUser);

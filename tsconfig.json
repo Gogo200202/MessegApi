@@ -18,7 +18,8 @@
     "*.ts",
     "Database/db.ts",
     "src/index.js",
-    "./utils**/*.ts"
+    "./utils**/*.ts",
+    "./Services/*ts"
   ],
   "exclude": ["node_modules"]
 }

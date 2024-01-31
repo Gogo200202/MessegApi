@@ -3,7 +3,9 @@ var router = express.Router();
 /* GET home page. */
 
 router.get("/", function (req: any, res: any, next: any) {
-  res.json({ test: 5 });
+  res.json({
+    Message: "This api is for authentication and authorization of user",
+  });
 });
 
 export { router };
