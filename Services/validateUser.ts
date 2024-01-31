@@ -9,6 +9,7 @@ async function ValidateUser(
   if (result == null) {
     return false;
   }
+
   let isValid = await bcrypt.compare(password, result._doc.hash);
 
   return isValid;

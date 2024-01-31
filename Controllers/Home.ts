@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
+const jwt = require("../utils/jwt");
 /* GET home page. */
 
-router.get("/", function (req: any, res: any, next: any) {
+router.get("/", jwt.verifyToken, function (req: any, res: any, next: any) {
   res.json({
     Message: "This api is for authentication and authorization of user",
   });
