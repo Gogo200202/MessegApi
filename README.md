@@ -11,6 +11,12 @@ clone this repo
 git https://github.com/Gogo200202/MessegApi.git
 ```
 
+install dependence
+
+```bash
+npm i
+```
+
 start project
 
 ```bash
