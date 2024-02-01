@@ -1,9 +1,9 @@
 let express = require("express");
 let router = express.Router();
-let CreateUserService = require("../Services/CreateUser");
-let validateUserService = require("../Services/validateUser");
+let CreateUserService = require("../Services/UserService");
+let validateUserService = require("../Services/UserService");
 let jwt = require("../utils/jwt");
-let makeUsersFriendService = require("../Services/MakeUsersFriend");
+let makeUsersFriendService = require("../Services/UserService");
 const register = router.post(
   "/register",
   async function (req: any, res: any, next: any) {
@@ -35,7 +35,7 @@ const login = router.post(
     }
   }
 );
-
+// its going to be more secure if use userId
 const makeUsersFriends = router.post(
   "/makeUsersFriends",
   async function (req: any, res: any, next: any) {

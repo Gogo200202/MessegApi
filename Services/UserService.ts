@@ -1,3 +1,5 @@
+const chat = require("../Database/db");
+const database = require("../Database/db");
 const Db = require("../Database/db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -34,4 +36,35 @@ async function createUser(user): Promise<boolean> {
   let response = await makeUser(user.username, user.email, user.password);
   return response;
 }
-export { createUser };
+
+async function makeUsersFriend(
+  userNameOne: string,
+  userNameTow: string
+): Promise<boolean> {
+  let friendChat = new chat.Chat({
+    userNameOne: userNameOne,
+    userNameTow: userNameTow,
+  });
+  try {
+    await friendChat.save();
+  } catch (err) {
+    return false;
+  }
+  return true;
+}
+
+async function ValidateUser(
+  userName: string,
+  password: string
+): Promise<boolean> {
+  let result = await database.User.findOne({ username: userName });
+  if (result == null) {
+    return false;
+  }
+
+  let isValid = await bcrypt.compare(password, result._doc.hash);
+
+  return isValid;
+}
+
+export { createUser, makeUsersFriend, ValidateUser };
