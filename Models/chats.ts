@@ -6,7 +6,7 @@ var chatSchema = new mongoose.Schema(
   {
     userNameOne: String,
     userNameTow: String,
-    chat: [{ text: String }],
+    chat: [{ userSended: String, text: String }, { timestamps: true }],
   },
   { timestamps: true }
 );
