@@ -17,4 +17,10 @@ const userOneTextUserTow = router.post(
     }
   }
 );
-export { userOneTextUserTow };
+
+const GetUserOneAndUserTowChat = router.post(
+  "/GetUserOneAndUserTowChat",
+  jwt.verifyToken,
+  async function (req: any, res: any, next: any) {}
+);
+export { userOneTextUserTow, GetUserOneAndUserTowChat };

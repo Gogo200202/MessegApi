@@ -11,7 +11,6 @@ function generateJwt(userName: string) {
 }
 
 function verifyToken(req, res, next) {
-  console.log();
   const token = req.header("Authorization");
   if (!token) return res.status(401).json({ error: "Access denied" });
   try {
