@@ -1,12 +1,16 @@
-import test from "node:test";
-
 var mongoose = require("mongoose");
 
 var chatSchema = new mongoose.Schema(
   {
     userNameOne: String,
     userNameTow: String,
-    chat: [{ userSended: String, text: String }, { timestamps: true }],
+    chat: [
+      {
+        userSended: String,
+        text: String,
+        time: { type: Date, default: Date.now },
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,8 +1,11 @@
 let express = require("express");
 let router = express.Router();
 const chatService = require("../Services/ChatService");
+const jwt = require("../utils/jwt");
+
 const userOneTextUserTow = router.post(
   "/UserOneTextUserTow",
+  jwt.verifyToken,
   async function (req: any, res: any, next: any) {
     const { userOne, userTow, text } = req.body;
     // the first user in function he sending the message
